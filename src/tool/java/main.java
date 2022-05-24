@@ -17,9 +17,7 @@ import tool.analysis.infoflowResult;
 import tool.other.*;
 
 public class main {
-   //public static String apkPath = "F:\\GooglePlayAPK\\googleplay\\microsoft-teams_1416_1.0.0.2021020501(2021411810).apk";
-   public static String apkPath = "E:\\\\tzy\\ContrastAPK\\test\\tv.periscope.android_v1.24.18.69-1900452_Android-4.4.apk";
-    //public static String apkPath = "F:\\GooglePlayAPK\\googleplay\\microsoft-teams_1416_1.0.0.2021020501(2021411810).apk";
+    public static String apkPath = "E:\\\\tzy\\ContrastAPK\\test\\tv.periscope.android_v1.24.18.69-1900452_Android-4.4.apk";
     public static String jarsPath = "C:\\Program Files\\AndroidSDK\\platforms\\";
     public static String androidCallbackPath = "C:\\Users\\Administrator\\Desktop\\MyDroid\\configs\\FlowDroidConfigs\\AndroidCallBacks.txt";
     public static String sourceAndSinkPath = "C:\\Users\\Administrator\\Desktop\\MyDroid\\configs\\FlowDroidConfigs\\SourceAndSinks.txt";
@@ -65,22 +63,10 @@ public class main {
         boolean flag = true;
         try {
             List<String[]> res = infoflowResult.taintAnalysis(config);
-            /*
-            for(String[] s : res){
-                System.out.println(s[0]+" | "+s[1]+" | "+s[2]+" | "+s[3]);
-            }
-             */
             List<String[]> sinksToEntity1 = modifyFlowResults.findThirdPartyName(res,callGraph);
             sinksToEntity = sinksToEntity1;
             modifyFlowResults.union(config,sinksToEntity1);
             List<String[]> formedResults1 = modifyFlowResults.modifiedFlowResults(sinksToEntity1,firstParty);
-            //测试将sink->thirdParty，content provider query->privacy
-            /*
-            System.out.println("转化为本体后的数据流：");
-            for(String[] strings:formedResults1){
-                System.out.println(strings[0]+" | "+strings[1]);
-            }
-             */
             formedResults = formedResults1;
         }catch (Exception e){
             flag = false;
