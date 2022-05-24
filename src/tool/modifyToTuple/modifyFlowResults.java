@@ -68,6 +68,7 @@ public class modifyFlowResults {
 
     //通过resultSinkInfo获得第三方的apk/url/ip;通过resultSourceInfo转化uri
     //结果形式：[entity data]
+    //bfs
     public static List<String[]> findThirdPartyName(List<String[]> infoFlowResults, CallGraph callGraph){
         List<String[]> res = new LinkedList<>();
 
